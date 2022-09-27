@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default rounded borders and increase the bottom margin */ 
+    .navbar {
+      margin-bottom: 50px;
+      border-radius: 0;
+    }
+    
+    /* Remove the jumbotron's default bottom margin */ 
+     .jumbotron {
+      margin-bottom: 0;
+    }
+   
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="jumbotron">
+  <div class="container text-center">
+    <h1>Fetal Health Classification</h1>      
+    <p>Health Care Industries</p>
+  </div>
+</div>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">Health care</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-user"></span></a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<form class="form-card" action="{{url_for('predict')}}"method='post'>
+  <div class="container">    
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading  text-center">Base-line value</div>
+        <br>
+        <div class="form-group">
+    <input type="number" class="form-control text-center" id="field1" name="field1" placeholder="Base-line">
+  </div>
+        <div class="panel-footer text-center"text-center>Enter Base-line Value</div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-primary">
+        <div class="panel-heading  text-center">Acceleration</div>
+        <br>
+        <div class="form-group">
+          <input type="number" class="form-control text-center" id="field2" name="field2" placeholder="Accelerations">
+  </div>
+        <div class="panel-footer text-center"text-center>Enter Acceleration</div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-primary">
+        <div class="panel-heading  text-center">Fetal_movement</div>
+        <br>
+        <div class="form-group">
+        <input type="number" class="form-control text-center" id="field3" name="field3"  placeholder="Fetal_movement">
+   </div>
+       <div class="panel-footer text-center"text-center>Enter Fetal_movement</div>
+     </div>
+  </div> 
+<div class="container">    
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading text-center"> Uterine_contractions</div>
+        <br>
+        <div class="form-group">
+        <input type="number" class="form-control text-center" id="field4" name="field4"  placeholder="Uterine_contractions">
+   </div>
+        <div class="panel-footer text-center"text-center>Enter Uterine_contractions</div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-primary">
+        <div class="panel-heading text-center">Light_decelerations</div>
+        <br>
+        <div class="form-group">
+        <input type="number" class="form-control text-center" id="field5" name="field5" placeholder="Light_decelerations">
+   </div>
+        <div class="panel-footer text-center"text-center>Light_decelerations</div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-primary">
+        <div class="panel-heading text-center">Severe_decelerations</div>
+        <br>
+        <div class="form-group">
+        <input type="number" class="form-control text-center" id="field6" name="field6" placeholder="Severe_decelerations">
+   </div>
+        <div class="panel-footer text-center"text-center>Severe_decelerations</div>
+      </div>
+    </div>
+  </div>
+</div><br><br>
+
+<div class="container">    
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading text-center">Prolonged_decelerations</div>
+        <br>
+        <div class="form-group">
+        <input type="number" class="form-control text-center" id="field7" name="field7"  placeholder="Prolonged_decelerations">
+   </div>
+        <div class="panel-footer text-center"text-center>Prolonged_decelerations</div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-primary">
+        <div class="panel-heading text-center">Abnormal_short_term_variability</div>
+        <br>
+        <div class="form-group">
+        <input type="number" class="form-control text-center" id="field8" name="field8" placeholder="Abnormal_short_term_variability">
+   </div>
+        <div class="panel-footer text-center"text-center>Abnormal_short_term_variability</div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-primary">
+        <div class="panel-heading text-center">Mean_value_of_short_term_variability</div>
+        <br>
+        <div class="form-group">
+        <input type="number" class="form-control text-center" id="field9" name="field9" placeholder="Mean_value_of_short_term_variability">
+   </div>
+        <div class="panel-footer text-center"text-center>Mean_value_of_short_term_variability</div>
+      </div>
+    </div>
+  </div>
+</div><br><br>
+
+
+
+<div class="container">    
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading text-center">Percentage_of_time_with_abnormal_long_term_variability</div>
+        <br>
+        <div class="form-group">
+        <input type="number" class="form-control text-center" id="field10" name="field10"  placeholder="Percentage_of_time_with_abnormal_long_term_variability">
+   </div>
+        <div class="panel-footer text-center"text-center>Percentage_of_time_with_abnormal_long_term_variability</div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-primary">
+        <div class="panel-heading text-center">mean_value_of_long_term_variability</div>
+        <br>
+        <div class="form-group">
+        <input type="number" class="form-control text-center" id="field11" name="field11"  placeholder="mean_value_of_long_term_variability">
+   </div>
+        <div class="panel-footer text-center"text-center>mean_value_of_long_term_variability</div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-primary">
+        <div class="panel-heading text-center">Histogram_width</div>
+        <br>  
+        <div class="form-group">
+        <input type="number" class="form-control text-center" id="field12" name="field12"  placeholder="Histogram_width">
+   </div>
+        <div class="panel-footer text-center"text-center>Histogram_width</div>
+      </div>
+    </div>
+  </div>
+</div><br><br>
+
+
+
+
+<div class="container">    
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading text-center">Histogram_min</div>
+        <br>
+        <div class="form-group">
+        <input type="number" class="form-control text-center" id="field13" name="field13"  placeholder="Histogram_min">
+   </div>
+        <div class="panel-footer text-center"text-center>Histogram_min</div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-primary">
+        <div class="panel-heading text-center">Histogram_max</div>
+        <br>
+        <div class="form-group">
+        <input type="number" class="form-control text-center" id="field14" name="field14"  placeholder="Histogram_max">
+   </div>
+        <div class="panel-footer text-center"text-center>Histogram_max</div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-primary">
+        <div class="panel-heading text-center">Histogram_number_of_peaks</div>
+        <br>
+        <div class="form-group">
+        <input type="number" class="form-control text-center" id="field15" name="field15"  placeholder="Histogram_number_of_peaks">
+   </div>
+        <div class="panel-footer text-center"text-center>Histogram_number_of_peaks</div>
+      </div>
+    </div>
+  </div>
+</div><br><br>
+
+
+
+<div class="container">    
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading text-center">Histogram_number_of_zeros</div>
+        <br>
+        <div class="form-group">
+        <input type="number" class="form-control text-center" id="field16" name="field16"  placeholder="Histogram_number_of_zeros">
+   </div>
+        <div class="panel-footer text-center"text-center>Histogram_number_of_zeros</div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-primary">
+        <div class="panel-heading text-center">Histogram_mode</div>
+        <br>
+        <div class="form-group">
+        <input type="number" class="form-control text-center" id="field17" name="field17"  placeholder="Histogram_mode">
+   </div>
+        <div class="panel-footer text-center"text-center>Histogram_mode</div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-primary">
+        <div class="panel-heading text-center">Histogram_mean</div>
+       <br>
+        <div class="form-group">
+        <input type="number" class="form-control text-center" id="field18" name="field18"  placeholder="Histogram_mean">
+   </div>
+        <div class="panel-footer text-center"text-center>Histogram_mean</div>
+      </div>
+    </div>
+  </div>
+</div><br><br>
+
+
+
+<div class="container">    
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading text-center">Histogram_median</div>
+       <br>
+        <div class="form-group">
+        <input type="number" class="form-control text-center" id="field19" name="field19" placeholder="Histogram_median">
+   </div>
+        <div class="panel-footer text-center"text-center>Histogram_median</div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-primary">
+        <div class="panel-heading text-center">Histogram_variance</div>
+        <br>
+        <div class="form-group">
+        <input type="number" class="form-control text-center" id="field20" name="field20" placeholder="Histogram_variance">
+   </div>
+        <div class="panel-footer text-center"text-center>Histogram_variance</div>
+      </div>
+    </div>
+
+    <div class="col-sm-4"> 
+      <div class="panel panel-primary">
+        <div class="panel-heading text-center">Histogram_tendency</div>
+        <br>
+        <div class="form-group">
+        <input type="number" class="form-control text-center" id="field21" name="field21" placeholder="Histogram_tendency">
+   </div>
+        <div class="panel-footer text-center"text-center>Histogram_tendency</div>
+      </div>
+    </div>
+
+    
+  </div>
+   <div class="row">
+  <div class="col-sm-6">
+  </div>
+  <div class="col-sm-6">
+    <button type="submit" class="btn btn-success">Button</button>
+  </div>
+  <p style="color:red">{{ prediction_text }}</p>
+
+  </div>
+</div><br><br>
+</form>
+
+
+
+
+<footer class="container-fluid text-center">
+  <p>Fetal Classfication</p>  
+  <form class="form-inline">SocialPrachar
+  </form>
+</footer>
+
+</body>
+</html>
